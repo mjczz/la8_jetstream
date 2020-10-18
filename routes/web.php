@@ -15,25 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //$gateway = new Braintree\Gateway([
-    //    'environment' => 'sandbox',
-    //    'merchantId' => env('merchantId'),
-    //    'publicKey' => env('publicKey'),
-    //    'privateKey' => env('privateKey')
-    //]);
+    $gateway = new Braintree\Gateway([
+        'environment' => 'sandbox',
+        'merchantId' => env('merchantId'),
+        'publicKey' => env('publicKey'),
+        'privateKey' => env('privateKey')
+    ]);
 
     //$aCustomerId = "mjczz";
-    //$clientToken = $gateway->clientToken()->generate([
+    $clientToken = $gateway->clientToken()->generate([
         //"customerId" => $aCustomerId
-    //]);
+    ]);
 
-    //return $clientToken;
-
-    return view('welcome');
-});
-
-Route::get('/b', function () {
-    return view('btree');
+    return view('btree', compact('clientToken'));
+    //return view('welcome');
 });
 
 Route::post('checkout', function(Request $request) {
