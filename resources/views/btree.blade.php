@@ -11,6 +11,7 @@
 <body>
 <div id="dropin-container"></div>
 <button id="submit-button">支付</button>
+<h3>4111111111111111</h3>
 <div id="checkout-message"></div>
 <script>
     var button = document.querySelector('#submit-button')
@@ -28,6 +29,7 @@
 
                 $('#submit-button').remove();
                 // Submit payload.nonce to your server
+
                 $.ajax({
                     type: 'POST',
                     url: '/checkout',
@@ -52,6 +54,7 @@
                         $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
                     }
                 });
+
             })
         })
     })
